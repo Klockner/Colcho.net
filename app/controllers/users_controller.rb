@@ -9,10 +9,16 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      redirect_to @user,
-                  notice: 'Cadastro criado com sucesso!'
-    else
+    begin
+      if @user.save
+        Signup.confirm_email(@user).deliver
+
+        redirect_to @user,
+                    notice: 'Cadastro criado com sucesso!'
+      else
+        render action: :new
+      end
+    rescue ActiveRecord::RecordNotUnique
       render action: :new
     end
   end

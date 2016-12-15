@@ -1,7 +1,10 @@
 pt:
+  confirmations:
+    success: Email confirmado com sucesso, obrigado!
   users:
     new:
       title: Cadastro
+      taken: Email já está em uso
     edit:
       title: Editar perfil
     show:
