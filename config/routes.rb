@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  get 'confirmations/show'
+  resources :rooms
+  resources :users
 
-  scope '(:locale)', locale: /en|pt/ do
-    resources :rooms
-    resources :users
-  end
+  # get 'confirmations/show'
+
+  # scope '(:locale)', locale: /en|pt/ do
+  #   resources :rooms
+  #   resources :users
+  # end
 
   resource :confirmation, only: [:show]
 
